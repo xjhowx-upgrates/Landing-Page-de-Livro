@@ -1,0 +1,247 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Ebook from "../assets/ebook.svg";
+import Logo from "../assets/logo.svg";
+
+let cardsFirstList = [
+  {
+    number: "01",
+    title: "Receitas naturais",
+    body: "Para cuidados com a pele, cabelo e corpo, feitas com ingredientes simples e eficazes.",
+  },
+  {
+    number: "02",
+    title: "Produtos naturais",
+    body: "Dicas para identificar e selecionar os melhores produtos naturais de acordo com suas necessidades específicas.",
+  },
+  {
+    number: "03",
+    title: "Abordagem consciente",
+    body: "Sobre a sustentabilidade e a importância de fazer escolhas responsáveis em seu dia a dia.",
+  },
+];
+
+let cardsSecondList = [
+  {
+    number: "04",
+    title: "Considerações especiais",
+    body: "Para garantir uma experiência de cuidados naturais segura e satisfatória.",
+  },
+  {
+    number: "05",
+    title: "Recursos adicionais",
+    body: "Para expandir seus conhecimentos e se aprofundar no universo dos produtos naturais.",
+  },
+  {
+    number: "06",
+    title: "Cuidado do Corpo",
+    body: "Transformar a sua rotina de cuidado do corpo em uma experiência mais saudável e sustentável.",
+  },
+];
+---
+
+<Layout title="E-book | Guia Definitivo">
+  <Header />
+  <main>
+    <div class="intro">
+      <p class="text-detail">O Guia Definitivo</p>
+      <h1>
+        Guia de Produtos<span class="clr-green"> Naturais</span>
+        Para Cuidado do Corpo
+      </h1>
+      <a class="button" href="https://pay.kiwify.com.br/2yqmDl0" target="_blank"
+        >Compre agora o seu e-book <i
+          class="fa fa-shopping-cart"
+          aria-hidden="true"></i>
+      </a>
+    </div>
+    <img class="book-cover" src={Ebook} alt="capa do e-book" />
+  </main>
+
+  <section id="sobre">
+    <ul role="list" class="list">
+      {
+        cardsFirstList.map((card, index, array) => (
+          <Card
+            number={card.number}
+            title={card.title}
+            body={card.body}
+            isLast={index === array.length - 1}
+          />
+        ))
+      }
+    </ul>
+    <img class="logo" src={Logo} alt="Logo" />
+    <ul role="list" class="list" data-attribute="second">
+      {
+        cardsSecondList.map((card, index, array) => (
+          <Card
+            number={card.number}
+            title={card.title}
+            body={card.body}
+            isLast={index === array.length - 1}
+          />
+        ))
+      }
+    </ul>
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .intro {
+    z-index: 1;
+    margin: 0 1rem;
+    line-height: 1.6;
+    border-radius: 50px;
+    background: #1e1e1e;
+    padding: clamp(30px, 4vw, 70px);
+    color: #fff;
+    width: 70%;
+    height: auto;
+  }
+
+  .book-cover {
+    position: absolute;
+    right: 5px;
+    z-index: 2;
+    top: -15%;
+    max-width: 45%;
+  }
+
+  .button {
+    display: inline-block;
+    position: absolute;
+    top: 93%;
+    left: 80px;
+    right: 0;
+    border-radius: 10px;
+    background: #0d9955;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: clamp(0.7rem, 2vw, 0.875rem) clamp(1rem, 2vw, 1rem);
+    font-size: clamp(0.6rem, 2vw, 1rem);
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    max-width: fit-content;
+    z-index: 9999;
+  }
+
+  @media (max-width: 850px) {
+    .button {
+      left: 20px;
+    }
+  }
+
+  i {
+    margin-left: 0.75rem;
+    font-size: clamp(0.75rem, 2vw, 1.1rem);
+  }
+
+  @media (max-width: 450px) {
+    .button {
+      left: 0;
+    }
+  }
+
+  .button:hover {
+    background-color: #216745;
+  }
+
+  .text-detail {
+    font-size: clamp(0.75rem, 2.5vw, 30px);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+    word-break: keep-all;
+    width: fit-content;
+    border-bottom: 1px solid #7ed957;
+  }
+
+  h1 {
+    font-size: clamp(0.875rem, 4vw, 4rem);
+    text-transform: uppercase;
+    max-width: 20ch;
+  }
+  span {
+    color: #7ed957;
+  }
+
+  /* SECTION CSS */
+
+  section {
+    width: min(100% - 1rem, 85rem);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 10rem;
+    place-items: center;
+    gap: 1rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    section {
+      grid-template-columns: 1fr;
+      place-items: start;
+      padding-top: 5rem;
+    }
+    .logo {
+      width: 30%;
+      grid-column: 1;
+      grid-row: 1;
+      place-self: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .intro {
+      border-radius: 30px;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .intro {
+      margin: 0;
+      border-radius: 0;
+      height: 150px;
+      width: fit-content;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .intro {
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .intro {
+      width: 100%;
+    }
+  }
+</style>

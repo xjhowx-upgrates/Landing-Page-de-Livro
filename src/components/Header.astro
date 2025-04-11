@@ -1,0 +1,41 @@
+<header>
+  <nav>
+    <ul>
+      <li><a href="#"><b>00</b> Início</a></li>
+      <li><a href="#sobre"><b>01</b> Sobre</a></li>
+    </ul>
+  </nav>
+</header>
+<style>
+    header {
+        padding: 2rem 0;
+    }
+  ul {
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: .850rem;
+    letter-spacing: 2px;
+  }
+
+  ul::before {
+    content: "";
+    display: flex;
+    align-self: center;
+    width: clamp(60px, 2vw, 100px);
+    height: 1px;
+    color: black;
+    background-color: black;
+  }
+
+  li:hover {
+    opacity: 0.8;
+    white-space: nowrap;
+    word-break: keep-all;
+  }
+  b {
+    margin-right: 1rem;
+    font-weight: 900;
+  }
+</style>
