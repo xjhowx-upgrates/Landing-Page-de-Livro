@@ -1,6 +1,3 @@
-Claro xJHOWx, aqui está o README traduzido, melhorado e com uma pegada mais clara e moderna — ideal pra impactar qualquer dev que bater o olho:
-
----
 
 # 🚀 Astro Starter: Projeto Básico
 
